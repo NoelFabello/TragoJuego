@@ -298,31 +298,31 @@ public abstract class Personaje {
 
     public void aplicarEstadosBase(Personaje objetivo){
         if(objetivo.getEstadosBase() == Estados.EMPORRADO){
-            objetivo.setPrecision(precision- 15);
-            objetivo.setAtaque(ataque+20);
+            objetivo.setPrecision(objetivo.getPrecision()- 15);
+            objetivo.setAtaque(objetivo.getAtaque()+20);
         }
         else if(objetivo.getEstadosBase() == Estados.CACHONDO){
-            objetivo.setAtaque(ataque+10);
-            objetivo.setVelocidad(velocidad+10);
+            objetivo.setAtaque(objetivo.getAtaque()+10);
+            objetivo.setVelocidad(getVelocidad()+10);
         }
         else if(objetivo.getEstadosBase() == Estados.TILTEADO){
-            objetivo.setAtaque(ataque+25);
+            objetivo.setAtaque(objetivo.getAtaque()+25);
         }
     }
     
     public void aplicarEstadosAlcohol(Personaje objetivo){
         if(objetivo.getEstadosAlcohol() == Estados.BORRACHO){
-            objetivo.setVelocidad(velocidad-10);
-            objetivo.setPrecision(precision-5);
+            objetivo.setVelocidad(objetivo.getVelocidad()-10);
+            objetivo.setPrecision(objetivo.getPrecision()-5);
         }
     }
     
     public void aplicarEstadosSexuales(Personaje objetivo){
         if(objetivo.getEstadosSexuales() == Estados.MOJADA){
-            objetivo.setArmadura(armadura-10);
+            objetivo.setArmadura(objetivo.getArmadura()-10);
         }
         else if(objetivo.getEstadosSexuales() == Estados.EMPALMADO){
-            objetivo.setVelocidad(velocidad-20);
+            objetivo.setVelocidad(objetivo.getVelocidad()-20);
         }
     }
 }
