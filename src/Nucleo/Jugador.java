@@ -67,6 +67,7 @@ public class Jugador {
     public void cambiarActivo(int personaje){
         equipo.add(activo);
         activo= equipo.get(personaje);
+        equipo.remove(personaje);
     }
     
     public void ActivarObjeto(int objeto, Personaje rival){

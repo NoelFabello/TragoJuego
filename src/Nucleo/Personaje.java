@@ -28,7 +28,8 @@ public abstract class Personaje {
     private Estados estadosSexuales;
     private ArrayList<Ataque> ataques;
 
-    public Personaje(String nombre, String descripcion, boolean sexo, int vida, int ataque, int armadura, int precision, int velocidad, int bonificador, ArrayList<Ataque> ataques) {
+    public Personaje(String nombre, String descripcion, boolean sexo, int vida, int ataque,
+                     int armadura, int precision, int velocidad, int bonificador, ArrayList<Ataque> ataques) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.sexo = sexo;
