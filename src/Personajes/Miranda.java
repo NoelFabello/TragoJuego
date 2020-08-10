@@ -22,6 +22,6 @@ import java.util.ArrayList;
 public class Miranda extends Personaje {
 
     public Miranda(String nombre, String descripcion, boolean sexo, int vida, int ataque, int armadura, int precision, int velocidad, int bonificador) {
-        super("Miranda", "", false, vida, ataque, armadura, precision, velocidad, bonificador, new SetAtaquesMiranda());
+        super("Miranda", "", false, vida, ataque, armadura, precision, velocidad, bonificador, new SetAtaquesMiranda(),"","");
     }
 }

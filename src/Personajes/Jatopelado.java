@@ -23,6 +23,6 @@ import java.util.ArrayList;
 public class Jatopelado extends Personaje{
 
     public Jatopelado(String nombre, String descripcion, boolean sexo, int vida, int ataque, int armadura, int precision, int velocidad, int bonificador, ArrayList<Ataque> ataques) {
-        super("Jatopelado", "", true, vida, ataque, armadura, precision, velocidad, bonificador, ataques);
+        super("Jatopelado", "", true, vida, ataque, armadura, precision, velocidad, bonificador, ataques,"","");
     }
 }

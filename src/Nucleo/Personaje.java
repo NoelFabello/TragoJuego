@@ -7,6 +7,8 @@ package Nucleo;
 
 import java.util.ArrayList;
 import java.util.Random;
+import javax.swing.ImageIcon;
+
 
 /**
  * @author Noel
@@ -27,9 +29,11 @@ public abstract class Personaje {
     private Estados estadosSexuales;
     private ArrayList<Ataque> ataques;
     private Bonificaciones Tabla;
+    private ImageIcon imagenCercana;
+    private ImageIcon imagenLejana;
 
     public Personaje(String nombre, String descripcion, boolean sexo, int vida, int ataque,
-                     int armadura, int precision, int velocidad, int bonificador, ArrayList<Ataque> ataques) {
+                     int armadura, int precision, int velocidad, int bonificador, ArrayList<Ataque> ataques, String imagenCercana, String imagenLejana) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.sexo = sexo;
@@ -45,6 +49,9 @@ public abstract class Personaje {
         this.estadosSexuales = null;
         this.ataques = ataques;
         Tabla = new Bonificaciones();
+        
+        this.imagenCercana = new ImageIcon(imagenCercana);
+        this.imagenLejana = new ImageIcon(imagenLejana);
     }
 
     public String getNombre() {

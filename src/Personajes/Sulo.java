@@ -21,6 +21,6 @@ import java.util.ArrayList;
  */
 public class Sulo extends Personaje {
     public Sulo(String nombre, String descripcion, boolean sexo, int vida, int ataque, int armadura, int precision, int velocidad, int bonificador) {
-        super("Sulo", "", true, vida, ataque, armadura, precision, velocidad, bonificador, new SetAtaquesSulo());
+        super("Sulo", "", true, vida, ataque, armadura, precision, velocidad, bonificador, new SetAtaquesSulo(),"","");
     }
 }

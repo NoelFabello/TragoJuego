@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 package Ilc;
-import static Ilc.PartidaPrincipal.InicioPartida;
+
+import static Ilc.Control.Inicio;
 
 /**
  *
@@ -17,7 +18,7 @@ Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        InicioPartida();
+        Inicio();
     }
     
 }
