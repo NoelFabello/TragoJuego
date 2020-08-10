@@ -10,7 +10,8 @@ import static Ilc.PartidaPrincipal.InicioPartida;
  *
  * @author Noel
  */
-public class Main {
+public class
+Main {
 
     /**
      * @param args the command line arguments
