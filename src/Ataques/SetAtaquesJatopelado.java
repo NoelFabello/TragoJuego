@@ -8,9 +8,9 @@ import java.util.ArrayList;
 public class SetAtaquesJatopelado extends  ArrayList<Ataque>{
     public SetAtaquesJatopelado() {
         super();
-        this.add(new Ataque("Pelotazo","",110,90,20,0, 0,0,0, 0,0,0,0,0 ,Estados.CONFUSO,null));
-        this.add(new Ataque("Omitida","",0,80,100,0, 40,0,20, 0,0,0,0,0 ,null,Estados.AUTISTA));
-        this.add(new Ataque("Rush","",0,100,100,0, 0,0,0, 0,0,0,0,0 ,Estados.TILTEADO,null));
+        this.add(new Ataque("Mar de Lagrimas","",110,100,30,0, 0,0,0, 0,0,0,0,0 ,Estados.ESTRESADO,null));
+        this.add(new Ataque("Peste Otaku","",0,80,100,0, -20,0,0, 0,0,0,0,0 ,null,null));
+        this.add(new Ataque("","",0,100,100,0, 0,0,0, 0,0,0,0,0 ,Estados.TILTEADO,null));
         this.add(new Ataque("Colleja","",60,100,0,0, 0,0,0, 0,0,-10,0,0 ,null,null));
 
 
