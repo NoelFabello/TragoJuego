@@ -20,6 +20,6 @@ import java.util.ArrayList;
  */
 public class Adri extends Personaje{
     public Adri(String nombre, String descripcion, boolean sexo, int vida, int ataque, int armadura, int precision, int velocidad, int bonificador) {
-        super("Adri", "", true, vida, ataque, armadura, precision, velocidad, bonificador, new SetAtaquesAdri(),"","");
+        super("Adri", "", true, vida, ataque, armadura, precision, velocidad, new SetAtaquesAdri(),"","");
     }
 }
