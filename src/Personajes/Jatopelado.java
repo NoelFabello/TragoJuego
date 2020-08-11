@@ -13,29 +13,31 @@ import Nucleo.Personaje;
 
 import java.util.ArrayList;
 
-/** @author Noel */
+/**
+ * @author Noel
+ */
 public class Jatopelado extends Personaje {
 
-  public Jatopelado() {
-    super(
-        "Jatopelado",
-        "",
-        true,
-        470,
-        60,
-        110,
-        100,
-        70,
-        new SetAtaquesJatopelado(),
-        "",
-        "");
-  }
-
-  @Override
-  public Boolean usarObjeto(Objeto objeto, Personaje rival) {
-    if (objeto instanceof Apuntes) {
-      SetAtaquesJatopelado.get(0).setDaño(SetAtaquesJatopelado.get(0).getDaño());
+    public Jatopelado() {
+        super(
+                "Jatopelado",
+                "",
+                true,
+                470,
+                60,
+                110,
+                100,
+                70,
+                new SetAtaquesJatopelado(),
+                "",
+                "");
     }
-    return super.usarObjeto(objeto, rival);
-  }
+
+    @Override
+    public Boolean usarObjeto(Objeto objeto, Personaje rival) {
+        if (objeto instanceof Apuntes) {
+        getAtaques().get(0).setDaño(getAtaques().get(0).getDaño()+20);
+        }
+        return super.usarObjeto(objeto, rival);
+    }
 }

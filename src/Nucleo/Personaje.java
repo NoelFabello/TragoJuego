@@ -16,7 +16,7 @@ public abstract class Personaje {
   private boolean sexo;
   private int vidaTotal;
   private int vidaActual;
-  private int ataque;
+  private int DañoAtaque;
   private int armadura;
   private int precision;
   private int velocidad;
@@ -45,7 +45,7 @@ public abstract class Personaje {
     this.sexo = sexo;
     this.vidaTotal = vida;
     this.vidaActual = vidaTotal;
-    this.ataque = ataque;
+    this.DañoAtaque = ataque;
     this.armadura = armadura;
     this.precision = precision;
     this.velocidad = velocidad;
@@ -83,12 +83,12 @@ public abstract class Personaje {
     this.sexo = sexo;
   }
 
-  public int getAtaque() {
-    return ataque;
+  public int getDañoAtaque() {
+    return DañoAtaque;
   }
 
-  public void setAtaque(int ataque) {
-    this.ataque = ataque;
+  public void setDañoAtaque(int ataque) {
+    this.DañoAtaque = ataque;
   }
 
   public int getArmadura() {
@@ -197,7 +197,7 @@ public abstract class Personaje {
 
           suerte += (añadido.nextDouble() * 0.1);
           daño =
-              (getAtaque() / rival.getArmadura())
+              (getDañoAtaque() / rival.getArmadura())
                   * (ataques.get(ataque).getDaño())
                   * suerte
                   * Tabla.aplicarBonificaciones(this, rival);
@@ -237,7 +237,7 @@ public abstract class Personaje {
         Random añadido = new Random();
         suerte += (añadido.nextDouble() * 0.1);
         daño =
-            (getAtaque() / rival.getArmadura())
+            (getDañoAtaque() / rival.getArmadura())
                 * (objeto.getAtaque())
                 * suerte
                 * Tabla.aplicarBonificaciones(this, rival);
@@ -252,11 +252,11 @@ public abstract class Personaje {
       }
 
       if (objeto.getModataque() != 0) {
-        setAtaque(ataque + objeto.getModataque());
+        setDañoAtaque(DañoAtaque + objeto.getModataque());
       }
 
       if (objeto.getModataqueRival() != 0) {
-        rival.setAtaque(rival.getAtaque() + objeto.getModataqueRival());
+        rival.setDañoAtaque(rival.getDañoAtaque() + objeto.getModataqueRival());
       }
 
       if (objeto.getModarmadura() != 0) {
@@ -292,11 +292,11 @@ public abstract class Personaje {
 
   public void aplicarCambiosStats(int Nataque, Personaje rival) {
     this.setVidaActual(vidaActual + ataques.get(Nataque).getModVida());
-    this.setAtaque(ataque + ataques.get(Nataque).getModAtaque());
+    this.setDañoAtaque(DañoAtaque + ataques.get(Nataque).getModAtaque());
     this.setArmadura(armadura + ataques.get(Nataque).getModArmadura());
     this.setPrecision(precision + ataques.get(Nataque).getModPrecision());
     this.setVelocidad(velocidad + ataques.get(Nataque).getModVelocidadRival());
-    rival.setAtaque(rival.getAtaque() + ataques.get(Nataque).getModAtaqueRival());
+    rival.setDañoAtaque(rival.getDañoAtaque() + ataques.get(Nataque).getModAtaqueRival());
     rival.setArmadura(rival.getArmadura() + ataques.get(Nataque).getModArmaduraRival());
     rival.setPrecision(rival.getPrecision() + ataques.get(Nataque).getModPrecisionRival());
     rival.setVelocidad(rival.getVelocidad() + ataques.get(Nataque).getModVelocidadRival());
@@ -322,12 +322,12 @@ public abstract class Personaje {
   public void aplicarEstadosBase(Personaje objetivo) {
     if (objetivo.getEstadosBase() == Estados.EMPORRADO) {
       objetivo.setPrecision(objetivo.getPrecision() - 15);
-      objetivo.setAtaque(objetivo.getAtaque() + 20);
+      objetivo.setDañoAtaque(objetivo.getDañoAtaque() + 20);
     } else if (objetivo.getEstadosBase() == Estados.CACHONDO) {
-      objetivo.setAtaque(objetivo.getAtaque() + 10);
+      objetivo.setDañoAtaque(objetivo.getDañoAtaque() + 10);
       objetivo.setVelocidad(getVelocidad() + 10);
     } else if (objetivo.getEstadosBase() == Estados.TILTEADO) {
-      objetivo.setAtaque(objetivo.getAtaque() + 25);
+      objetivo.setDañoAtaque(objetivo.getDañoAtaque() + 25);
     }
   }
 
