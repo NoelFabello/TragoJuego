@@ -5,6 +5,7 @@
  */
 package Personajes;
 
+import Ataques.SetAtaquesRyharuk;
 import Nucleo.Ataque;
 import Objetos.Capacho;
 import Objetos.Porro;
@@ -14,12 +15,29 @@ import Nucleo.Personaje;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author Noel
- */
-public class Ryharuk extends Personaje{
-    public Ryharuk(String nombre, String descripcion, boolean sexo, int vida, int ataque, int armadura, int precision, int velocidad, int bonificador, ArrayList<Ataque> ataques) {
-        super("Ryharuk", "", true, vida, ataque, armadura, precision, velocidad, bonificador, ataques,"","");
-    }
+/** @author Noel */
+public class Ryharuk extends Personaje {
+  public Ryharuk(
+      String nombre,
+      String descripcion,
+      boolean sexo,
+      int vida,
+      int ataque,
+      int armadura,
+      int precision,
+      int velocidad,
+      ArrayList<Ataque> ataques) {
+    super(
+        "Ryharuk",
+        "",
+        true,
+        430,
+        90,
+        90,
+        100,
+        90,
+        new SetAtaquesRyharuk(),
+        "",
+        "");
+  }
 }

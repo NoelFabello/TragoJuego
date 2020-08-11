@@ -5,24 +5,37 @@
  */
 package Personajes;
 
+import Ataques.SetAtaquesJatopelado;
 import Nucleo.Ataque;
 import Nucleo.Objeto;
-import
-        Objetos.Capacho;
-import Objetos.Porro;
-import Objetos.Vodka;
-import Objetos.Vómito;
+import Objetos.*;
 import Nucleo.Personaje;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author Noel
- */
-public class Jatopelado extends Personaje{
+/** @author Noel */
+public class Jatopelado extends Personaje {
 
-    public Jatopelado(String nombre, String descripcion, boolean sexo, int vida, int ataque, int armadura, int precision, int velocidad, int bonificador, ArrayList<Ataque> ataques) {
-        super("Jatopelado", "", true, vida, ataque, armadura, precision, velocidad, bonificador, ataques,"","");
+  public Jatopelado() {
+    super(
+        "Jatopelado",
+        "",
+        true,
+        470,
+        60,
+        110,
+        100,
+        70,
+        new SetAtaquesJatopelado(),
+        "",
+        "");
+  }
+
+  @Override
+  public Boolean usarObjeto(Objeto objeto, Personaje rival) {
+    if (objeto instanceof Apuntes) {
+      SetAtaquesJatopelado.get(0).setDaño(SetAtaquesJatopelado.get(0).getDaño());
     }
+    return super.usarObjeto(objeto, rival);
+  }
 }

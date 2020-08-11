@@ -5,9 +5,9 @@
  */
 package Personajes;
 
+import Ataques.SetAtaquesJosito;
 import Nucleo.Ataque;
-import
-        Objetos.Capacho;
+import Objetos.Capacho;
 import Objetos.Porro;
 import Objetos.Vodka;
 import Objetos.Vómito;
@@ -15,13 +15,21 @@ import Nucleo.Personaje;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author Noel
- */
-public class Josito extends Personaje{
+/** @author Noel */
+public class Josito extends Personaje {
 
-    public Josito(String nombre, String descripcion, boolean sexo, int vida, int ataque, int armadura, int precision, int velocidad, int bonificador, ArrayList<Ataque> ataques) {
-        super("Josito", "", true, vida, ataque, armadura, precision, velocidad, bonificador, ataques,"","");
-    }
+  public Josito() {
+    super(
+        "Josito",
+        "",
+        true,
+        430,
+        80,
+        110,
+        100,
+        100,
+        new SetAtaquesJosito(),
+        "",
+        "");
+  }
 }

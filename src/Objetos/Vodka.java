@@ -4,17 +4,32 @@
  * and open the template in the editor.
  */
 package Objetos;
+
 import Nucleo.Estados;
 import Nucleo.Objeto;
 import Nucleo.Objeto;
 import Nucleo.Personaje;
-/**
- *
- * @author Noel
- */
+/** @author Noel */
 public class Vodka extends Objeto {
 
-    public Vodka(String nombre, String descripcion, boolean usado, int ataque, int modataque, int modataqueRival, int modarmadura, int modarmaduraRival, int precision, int modprecision, int modprecisionRival, int modvelocidad, int modvelocidadRival, int modvida, Estados estado) {
-        super("Vodka", "descripcion", false, ataque, modataque, modataqueRival, modarmadura, modarmaduraRival, precision, modprecision, modprecisionRival, modvelocidad, modvelocidadRival, modvida, estado);
-    }
+  public Vodka() {
+    super(
+        "Vodka",
+        "descripcion",
+        false,
+        0,
+        +20,
+        0,
+        -10,
+        0,
+        100,
+        5,
+        0,
+        0,
+        0,
+        0,
+        Estados.CONTENTILLO,
+        null,
+        "");
+  }
 }

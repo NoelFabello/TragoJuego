@@ -15,12 +15,20 @@ import Nucleo.Personaje;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author Noel
- */
+/** @author Noel */
 public class Sulo extends Personaje {
-    public Sulo(String nombre, String descripcion, boolean sexo, int vida, int ataque, int armadura, int precision, int velocidad, int bonificador) {
-        super("Sulo", "", true, vida, ataque, armadura, precision, velocidad, bonificador, new SetAtaquesSulo(),"","");
-    }
+  public Sulo() {
+    super(
+        "Sulo",
+        "",
+        true,
+         400,
+        105,
+        100,
+        100,
+        90,
+        new SetAtaquesSulo(),
+        "",
+        "");
+  }
 }

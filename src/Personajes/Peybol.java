@@ -5,9 +5,9 @@
  */
 package Personajes;
 
+import Ataques.SetAtaquesPeybol;
 import Nucleo.Ataque;
-import
-        Objetos.Capacho;
+import Objetos.Capacho;
 import Objetos.Porro;
 import Objetos.Vodka;
 import Objetos.Vómito;
@@ -15,12 +15,20 @@ import Nucleo.Personaje;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author Noel
- */
-public class Peybol extends Personaje{
-    public Peybol(String nombre, String descripcion, boolean sexo, int vida, int ataque, int armadura, int precision, int velocidad, int bonificador, ArrayList<Ataque> ataques) {
-        super("Peybol", "", true, vida, ataque, armadura, precision, velocidad, bonificador, ataques,"","");
-    }
+/** @author Noel */
+public class Peybol extends Personaje {
+  public Peybol() {
+    super(
+        "Peybol",
+        "",
+        true,
+        380,
+        120,
+        80,
+        90,
+        95,
+        new SetAtaquesPeybol(),
+        "",
+        "");
+  }
 }

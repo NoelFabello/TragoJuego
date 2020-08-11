@@ -17,7 +17,24 @@ import Nucleo.Personaje;
  */
 public class Vómito extends Objeto {
 
-    public Vómito(String nombre, String descripcion, boolean usado, int ataque, int modataque, int modataqueRival, int modarmadura, int modarmaduraRival, int precision, int modprecision, int modprecisionRival, int modvelocidad, int modvelocidadRival, int modvida, Estados estado) {
-        super(nombre, descripcion, usado, ataque, modataque, modataqueRival, modarmadura, modarmaduraRival, precision, modprecision, modprecisionRival, modvelocidad, modvelocidadRival, modvida, estado);
-    }
+  public Vómito() {
+    super(
+        "Vómito",
+        "",
+        false,
+        130,
+        -20,
+        0,
+        0,
+        -30,
+        90,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null,
+           "" );
+  }
 }

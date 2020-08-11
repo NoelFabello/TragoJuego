@@ -4,18 +4,16 @@
  * and open the template in the editor.
  */
 package Objetos;
+
 import Nucleo.Estados;
 import Personajes.Miranda;
 import Personajes.Ryharuk;
 import Nucleo.Objeto;
 import Nucleo.Personaje;
-/**
- *
- * @author Noel
- */
-public class Capacho extends Objeto{
+/** @author Noel */
+public class Capacho extends Objeto {
 
-    public Capacho(String nombre, String descripcion, boolean usado, int ataque, int modataque, int modataqueRival, int modarmadura, int modarmaduraRival, int precision, int modprecision, int modprecisionRival, int modvelocidad, int modvelocidadRival, int modvida, Estados estado) {
-        super("Capacho", "", false, ataque, modataque, modataqueRival, modarmadura, modarmaduraRival, precision, modprecision, modprecisionRival, modvelocidad, modvelocidadRival, modvida, estado);
-    }
+  public Capacho() {
+    super("Capacho", "", false, 0, +40, 0, -20, 0, 95, 0, 0, 0, 0, 0, Estados.BORRACHO, null, "");
+  }
 }

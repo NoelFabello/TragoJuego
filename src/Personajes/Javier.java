@@ -5,9 +5,9 @@
  */
 package Personajes;
 
+import Ataques.SetAtaquesJavier;
 import Nucleo.Ataque;
-import
-        Objetos.Capacho;
+import Objetos.Capacho;
 import Objetos.Porro;
 import Objetos.Vodka;
 import Objetos.Vómito;
@@ -15,13 +15,21 @@ import Nucleo.Personaje;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author Noel
- */
-public class Javier extends Personaje{
+/** @author Noel */
+public class Javier extends Personaje {
 
-    public Javier(String nombre, String descripcion, boolean sexo, int vida, int ataque, int armadura, int precision, int velocidad, int bonificador, ArrayList<Ataque> ataques) {
-        super("Javier", "", true, vida, ataque, armadura, precision, velocidad, bonificador, ataques,"","");
-    }
+  public Javier() {
+    super(
+        "Javier",
+        "",
+        true,
+        350,
+        130,
+        70,
+        100,
+        100,
+        new SetAtaquesJavier(),
+        "",
+        "");
+  }
 }

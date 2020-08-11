@@ -5,6 +5,7 @@
  */
 package Personajes;
 
+import Ataques.SetAtaquesFasero;
 import Nucleo.Ataque;
 import Objetos.Capacho;
 import Objetos.Porro;
@@ -14,12 +15,20 @@ import Nucleo.Personaje;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author Noel
- */
-public class Fasero extends Personaje{
-    public Fasero(String nombre, String descripcion, boolean sexo, int vida, int ataque, int armadura, int precision, int velocidad, int bonificador, ArrayList<Ataque> ataques) {
-        super("Fasero", "", true, vida, ataque, armadura, precision, velocidad, bonificador, ataques,"","");
-    }
+/** @author Noel */
+public class Fasero extends Personaje {
+  public Fasero() {
+    super(
+        "Fasero",
+        "",
+        true,
+        330,
+        140,
+        60,
+        100,
+        90,
+        new SetAtaquesFasero(),
+        "",
+        "");
+  }
 }

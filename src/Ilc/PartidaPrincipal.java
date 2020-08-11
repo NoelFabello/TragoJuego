@@ -17,7 +17,7 @@ public class PartidaPrincipal extends JFrame {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setExtendedState(MAXIMIZED_BOTH);
         this.setIconImage(new ImageIcon("Fotos/FotoTrago.jfif").getImage());
-        
+
         this.cercano = cercano;
         this.lejano = lejano;
 //        this.campo = new Campo();

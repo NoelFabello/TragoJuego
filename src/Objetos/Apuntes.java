@@ -4,17 +4,15 @@
  * and open the template in the editor.
  */
 package Objetos;
+
 import Nucleo.Estados;
-import
-        Personajes.Javier;
+import Personajes.Javier;
 import Nucleo.Objeto;
 import Nucleo.Personaje;
-/**
- *
- * @author Noel
- */
-public class Apuntes extends Objeto{
-    public Apuntes(String nombre, String descripcion, boolean usado, int ataque, int modataque, int modataqueRival, int modarmadura, int modarmaduraRival, int precision, int modprecision, int modprecisionRival, int modvelocidad, int modvelocidadRival, int modvida, Estados estado) {
-        super("Apuntes", "", false, ataque, modataque, modataqueRival, modarmadura, modarmaduraRival, precision, modprecision, modprecisionRival, modvelocidad, modvelocidadRival, modvida, estado);
-    }
+/** @author Noel */
+public class Apuntes extends Objeto {
+  public Apuntes() {
+    super(
+        "Apuntes", "", false, 0, +20, 0, +10, 0, 100, 10, 0, 0, 0, 0, Estados.ESTRESADO, null, "");
+  }
 }

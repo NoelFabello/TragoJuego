@@ -4,6 +4,8 @@
  */
 package Nucleo;
 
+import javax.swing.*;
+
 /** @author Noel */
 public abstract class Objeto {
   private String nombre;
@@ -20,8 +22,9 @@ public abstract class Objeto {
   private int modvelocidad;
   private int modvelocidadRival;
   private int modvida;
-  private Estados estado;
-
+  private Estados EstadoPropio;
+  private Estados EstadoEnemigo;
+  private ImageIcon fotoObjeto;
   public Objeto(
       String nombre,
       String descripcion,
@@ -37,7 +40,9 @@ public abstract class Objeto {
       int modvelocidad,
       int modvelocidadRival,
       int modvida,
-      Estados estado) {
+      Estados EstadoPropio,
+      Estados EstadoEnemigo,
+      String foto) {
     this.nombre = nombre;
     this.descripcion = descripcion;
     this.usado = usado;
@@ -52,7 +57,10 @@ public abstract class Objeto {
     this.modvelocidad = modvelocidad;
     this.modvelocidadRival = modvelocidadRival;
     this.modvida = modvida;
-    this.estado = estado;
+    this.EstadoPropio = EstadoPropio;
+    this.EstadoEnemigo = EstadoEnemigo;
+    fotoObjeto = new ImageIcon(foto);
+
   }
 
   public String getNombre() {
@@ -65,6 +73,14 @@ public abstract class Objeto {
 
   public String getDescripcion() {
     return descripcion;
+  }
+
+  public ImageIcon getFotoObjeto() {
+    return fotoObjeto;
+  }
+
+  public void setFotoObjeto(ImageIcon fotoObjeto) {
+    this.fotoObjeto = fotoObjeto;
   }
 
   public void setDescripcion(String descripcion) {
@@ -167,11 +183,19 @@ public abstract class Objeto {
     this.modvida = modvida;
   }
 
-  public Estados getEstado() {
-    return estado;
+  public Estados getEstadoPropio() {
+    return EstadoPropio;
   }
 
-  public void setEstado(Estados estado) {
-    this.estado = estado;
+  public void setEstadoPropio(Estados estadoPropio) {
+    EstadoPropio = estadoPropio;
+  }
+
+  public Estados getEstadoEnemigo() {
+    return EstadoEnemigo;
+  }
+
+  public void setEstadoEnemigo(Estados estadoEnemigo) {
+    EstadoEnemigo = estadoEnemigo;
   }
 }

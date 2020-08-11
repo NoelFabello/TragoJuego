@@ -10,12 +10,26 @@ import Personajes.Noel;
 import Nucleo.Objeto;
 import Nucleo.Personaje;
 
-/**
- *
- * @author Noel
- */
-public class Screenshot extends Objeto{
-    public Screenshot(String nombre, String descripcion, boolean usado, int ataque, int modataque, int modataqueRival, int modarmadura, int modarmaduraRival, int precision, int modprecision, int modprecisionRival, int modvelocidad, int modvelocidadRival, int modvida, Estados estado) {
-        super("Screenshot", "", false, ataque, modataque, modataqueRival, modarmadura, modarmaduraRival, precision, modprecision, modprecisionRival, modvelocidad, modvelocidadRival, modvida, estado);
-    }
+/** @author Noel */
+public class Screenshot extends Objeto {
+  public Screenshot() {
+    super(
+        "Screenshot",
+        "",
+        false,
+        120,
+        +10,
+        0,
+        0,
+        -20,
+        60,
+        0,
+        0,
+        0,
+        0,
+        0,
+        Estados.CACHONDO,
+        Estados.MOJADA,
+        "");
+  }
 }
