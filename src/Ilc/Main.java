@@ -6,6 +6,12 @@
 package Ilc;
 
 import static Ilc.Control.Inicio;
+import Nucleo.Jugador;
+import Nucleo.Personaje;
+import Personajes.Miranda;
+import Personajes.Noel;
+import Personajes.Sulo;
+import java.util.ArrayList;
 
 /**
  *

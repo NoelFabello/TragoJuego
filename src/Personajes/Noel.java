@@ -32,7 +32,7 @@ public class Noel extends Personaje {
         100,
         85,
         new SetAtaquesNoel(),
-        "",
-        "");
+        "Fotos/Cercanas/noel.png",
+        "Fotos/Lejanas/noel.png");
   }
 }
