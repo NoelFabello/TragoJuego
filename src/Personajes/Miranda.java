@@ -29,7 +29,7 @@ public class Miranda extends Personaje {
         100,
         70,
         new SetAtaquesMiranda(),
-        "",
-        "");
+        "Fotos/Cercanas/miranda.png",
+        "Fotos/Lejanas/miranda.png");
   }
 }
