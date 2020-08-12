@@ -24,7 +24,7 @@ public abstract class Personaje {
   private Estados estadosAlcohol;
   private Estados estadosSexuales;
   private ArrayList<Ataque> ataques;
-  private Bonificaciones Tabla;
+  private final Bonificaciones Tabla;
   private ImageIcon imagenCercana;
   private ImageIcon imagenLejana;
 
@@ -179,7 +179,7 @@ public abstract class Personaje {
       int ataque,
       Personaje
           rival) { // RANGOS daño entre 80 y 130, ataque y armadura entre 50 y 150, vida entre 300 y
-                   // 500
+    // 500
     double suerte = 0.3;
     double daño;
     Random añadido = new Random();
@@ -223,11 +223,7 @@ public abstract class Personaje {
     return 0;
   }
 
-  public Boolean usarObjeto(
-      Objeto objeto,
-      Personaje
-          rival) { // RANGOS daño entre 80 y 130, ataque y armadura entre 50 y 150, vida entre 300 y
-                   // 500
+  public Boolean usarObjeto(Objeto objeto, Personaje rival) { // RANGOS daño entre 80 y 130, ataque y armadura entre 50 y 150, vida entre 300 y// 500
     objeto.setUsado(true);
     Random acierto = new Random();
     if (acierto.nextInt(100) < objeto.getPrecision()) {
@@ -312,8 +308,7 @@ public abstract class Personaje {
       objetivo.setEstadosAlcohol(estado);
       aplicarEstadosAlcohol(objetivo);
     } else if (estado == Estados.MOJADA
-        || estado == Estados.EMPALMADO
-        || estado == Estados.MODOSEXO) {
+        || estado == Estados.EMPALMADO) {
       objetivo.setEstadosSexuales(estado);
       aplicarEstadosSexuales(objetivo);
     }

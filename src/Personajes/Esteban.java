@@ -5,6 +5,8 @@
  */
 package Personajes;
 
+import Ataques.SetAtaquesEsteban;
+import Ataques.SetAtaquesFasero;
 import Nucleo.Ataque;
 import Objetos.Capacho;
 import Objetos.Porro;
@@ -14,12 +16,9 @@ import Nucleo.Personaje;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author Noel
- */
-public class Esteban extends Personaje{
-    public Esteban(String nombre, String descripcion, boolean sexo, int vida, int ataque, int armadura, int precision, int velocidad, int bonificador, ArrayList<Ataque> ataques) {
-        super("Esteban", "", true, vida, ataque, armadura, precision, velocidad, ataques,"","");
-    }
+/** @author Noel */
+public class Esteban extends Personaje {
+  public Esteban() {
+    super("Esteban", "", true, 430, 75, 100, 100, 75, new SetAtaquesEsteban(), "", "");
+  }
 }

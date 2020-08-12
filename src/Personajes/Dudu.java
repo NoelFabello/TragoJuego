@@ -5,6 +5,7 @@
  */
 package Personajes;
 
+import Ataques.SetAtaquesDudu;
 import Nucleo.Ataque;
 import Objetos.Capacho;
 import Objetos.Porro;
@@ -14,12 +15,9 @@ import Nucleo.Personaje;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author Noel
- */
-public class Dudu extends Personaje{
-    public Dudu(String nombre, String descripcion, boolean sexo, int vida, int ataque, int armadura, int precision, int velocidad, int bonificador, ArrayList<Ataque> ataques) {
-        super("Dudu", "", true, vida, ataque, armadura, precision, velocidad, ataques,"","");
-    }
+/** @author Noel */
+public class Dudu extends Personaje {
+  public Dudu() {
+    super("Dudu", "", true, 440, 100, 50, 100, 75, new SetAtaquesDudu(), "", "");
+  }
 }

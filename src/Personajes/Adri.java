@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Personajes;
+
 import Ataques.SetAtaquesAdri;
 import Nucleo.Ataque;
 import Objetos.Capacho;
@@ -14,12 +15,20 @@ import Nucleo.Personaje;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author Noel
- */
-public class Adri extends Personaje{
-    public Adri(String nombre, String descripcion, boolean sexo, int vida, int ataque, int armadura, int precision, int velocidad, int bonificador) {
-        super("Adri", "", true, vida, ataque, armadura, precision, velocidad, new SetAtaquesAdri(),"","");
-    }
+/** @author Noel */
+public class Adri extends Personaje {
+  public Adri() {
+    super(
+        "Adri",
+        "",
+        true,
+        400,
+        120,
+        70,
+        100,
+        70,
+        new SetAtaquesAdri(),
+        "",
+        "");
+  }
 }

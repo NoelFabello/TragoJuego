@@ -11,8 +11,30 @@ import Nucleo.Objeto;
 import Nucleo.Personaje;
 
 /** @author Noel */
+
 public class Screenshot extends Objeto {
-  public Screenshot() {
+  public Screenshot(Noel personaje) {
+    super(
+            "Screenshot",
+            "",
+            false,
+            140,
+            +10,
+            0,
+            0,
+            -20,
+            100,
+            0,
+            0,
+            0,
+            0,
+            0,
+            Estados.CACHONDO,
+            Estados.MOJADA,
+            "");
+  }
+
+  public Screenshot(Personaje personaje) {
     super(
         "Screenshot",
         "",
@@ -32,4 +54,5 @@ public class Screenshot extends Objeto {
         Estados.MOJADA,
         "");
   }
+
 }

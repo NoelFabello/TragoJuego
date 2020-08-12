@@ -7,6 +7,8 @@ package Personajes;
 
 import Ataques.SetAtaquesNoel;
 import Nucleo.Ataque;
+import Nucleo.Estados;
+import Nucleo.Objeto;
 import Objetos.Ak47;
 import Objetos.Capacho;
 import Objetos.Porro;
@@ -34,5 +36,19 @@ public class Noel extends Personaje {
         new SetAtaquesNoel(),
         "Fotos/Cercanas/noel.png",
         "Fotos/Lejanas/noel.png");
+  }
+
+  @Override
+  public Boolean usarObjeto(Objeto objeto, Personaje rival) {
+    if (objeto instanceof Ak47) {
+      if (super.usarObjeto(objeto, rival)) {
+        return true;
+      } else {
+        setEstadosBase(Estados.TILTEADO);
+        return false;
+      }
+    } else {
+      return super.usarObjeto(objeto, rival);
+    }
   }
 }
