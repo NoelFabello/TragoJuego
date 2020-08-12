@@ -115,6 +115,14 @@ public abstract class Personaje {
     this.velocidad = velocidad;
   }
 
+    public ImageIcon getImagenCercana() {
+        return imagenCercana;
+    }
+
+    public ImageIcon getImagenLejana() {
+        return imagenLejana;
+    }
+
   public int getVidaTotal() {
     return vidaTotal;
   }

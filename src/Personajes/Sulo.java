@@ -28,7 +28,7 @@ public class Sulo extends Personaje {
         100,
         90,
         new SetAtaquesSulo(),
-        "Fotos/Cercanas/sulo.png",
-        "Fotos/Lejanas/sulo.png");
+        "Descargas/Cercanas/sulo.png",
+        "Descargas/Lejanas/sulo.png");
   }
 }

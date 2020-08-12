@@ -34,8 +34,8 @@ public class Noel extends Personaje {
         100,
         85,
         new SetAtaquesNoel(),
-        "Fotos/Cercanas/noel.png",
-        "Fotos/Lejanas/noel.png");
+        "Descargas/Cercanas/noel.png",
+        "Descargas/Lejanas/noel.png");
   }
 
   @Override

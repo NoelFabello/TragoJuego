@@ -35,7 +35,7 @@ public class PartidaPrincipal extends JFrame {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setBounds(0, 0, 1938, 1048);
         this.setExtendedState(MAXIMIZED_BOTH);
-        this.setIconImage(new ImageIcon("Fotos/FotoTrago.jfif").getImage());
+        this.setIconImage(new ImageIcon("Descargas/FotoTrago.jfif").getImage());
         
         InitComponents(jugador1,jugador2);
     }

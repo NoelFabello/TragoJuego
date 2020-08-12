@@ -10,6 +10,7 @@ import Nucleo.Personaje;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
@@ -20,8 +21,14 @@ import javax.swing.JPanel;
 public class Mando extends JPanel{
 
     private Jugador jugador;
+    
     private ArrayList<JButton> BotonesLucha;
     private ArrayList<JButton> BotonesCambios;
+    private ArrayList<JButton> BotonesObjetos;
+    
+    private JButton botonMenuCambio;
+    private JButton botonMenuObjeto;
+    private JButton atras;
     
     private int largo;
     private int alto;
@@ -37,11 +44,60 @@ public class Mando extends JPanel{
         this.jugador = jugador;
         this.BotonesLucha = new ArrayList<>(4);
         this.BotonesCambios = new ArrayList<>(3);
-        CreaBotonesLucha();
-        CreaBotonesCambios();
         
+        BotonesLucha();
+        BotonesCambios();
+        BotonesControl();
     }
-    public void CreaBotonesLucha(){
+    
+    public void BotonesControl(){
+        
+        botonMenuCambio = new JButton("Cambios");
+        botonMenuObjeto = new JButton("Objetos");
+        atras = new JButton("Atras");
+        
+        botonMenuCambio.setBounds(510+20,getHeight()/2-100-5,240,100);
+        botonMenuObjeto.setBounds(510+20,getHeight()/2+5,240,100);
+        atras.setBounds(getWidth()-120, getHeight()-100, 90, 40);
+        
+        botonMenuCambio.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                BotonesControlsetVisible(false);
+                BotonesLuchasetVisible(false);
+                atras.setVisible(true);
+                BotonesCambiossetVisible(true);
+            }
+        });
+        botonMenuObjeto.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                BotonesControlsetVisible(false);
+                BotonesLuchasetVisible(false);
+                atras.setVisible(true);
+                BotonesCambiossetVisible(false);
+            }
+        });
+        atras.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+             atras.setVisible(true);
+             BotonesControlsetVisible(true);
+             BotonesLuchasetVisible(true);
+             BotonesCambiossetVisible(false);
+            }
+        });
+        
+        atras.setVisible(false);
+        ImageIcon imagen = new ImageIcon("Descargas/atras.png");
+        atras.setIcon(new ImageIcon(imagen.getImage().getScaledInstance(atras.getWidth(), atras.getHeight(),FRAMEBITS)));
+
+        this.add(botonMenuCambio);
+        this.add(botonMenuObjeto);
+        this.add(atras);
+    }
+    
+    public void BotonesLucha(){
         int ancho = 240;
         int alto = 100;
         
@@ -54,6 +110,7 @@ public class Mando extends JPanel{
             add(BotonesLucha.get(i));
         }
     }
+    
     public void BotonLucha(int ataque,int a,int b,int c,int d){
         JButton boton = new JButton();
         boton.setBounds(a, b, c, d);boton.addActionListener(new ActionListener() {
@@ -65,30 +122,15 @@ public class Mando extends JPanel{
         BotonesLucha.add(boton);
     }
     
-    public void CreaBotonesCambios(){
-        JButton  botonMenu= new JButton("Cambiar");
-        botonMenu.setBounds(510+20,getHeight()/2-100-5,240,100);
-        botonMenu.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                botonMenu.setVisible(false);
-                for (int i = 1; i < 4; i++) {
-                    BotonesCambios.get(i).setVisible(true);
-                }
-                for (int i = 0; i < 4; i++) {
-                    BotonesLucha.get(i).setVisible(false);
-                }
-            }
-        });
-        BotonesCambios.add(botonMenu);
-//        add(botonMenu);
-//        int s = getWidth()/3-;
-//        BotonCambio(0,0,2,3,4);
-//        BotonCambio(1,1,2,3,4);
-//        BotonCambio(2,1,2,3,4);
-//                
-        for (int i = 0; i < BotonesCambios.size(); i++) {
-            add(BotonesCambios.get(i));
+    public void BotonesCambios(){
+        int i = getWidth()/3-120;
+        int j = 150;
+        BotonCambio(0,30,getHeight()/2-j,i,j);
+        BotonCambio(1,60+i,getHeight()/2-j,i,j);
+        BotonCambio(2,90+2*i,getHeight()/2-j,i,j);
+                
+        for (int s = 0; s < BotonesCambios.size(); s++) {
+            add(BotonesCambios.get(s));
         }
     }
     
@@ -96,6 +138,7 @@ public class Mando extends JPanel{
         JButton boton = new JButton(jugador.getEquipo().get(personaje).getNombre());
         boton.setVisible(false);
         boton.setBounds(a, b, c, d);
+        boton.setIcon(new ImageIcon((jugador.getEquipo().get(personaje).getImagenCercana().getImage().getScaledInstance(boton.getWidth(), boton.getHeight(), FRAMEBITS))));
         boton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
@@ -103,5 +146,22 @@ public class Mando extends JPanel{
             }
         });
         BotonesCambios.add(boton);
+    }
+    
+    public void BotonesLuchasetVisible(boolean b){
+        for (int i = 0; i < BotonesLucha.size(); i++) {
+            BotonesLucha.get(i).setVisible(b);
+              }
+    }
+    
+    public void BotonesCambiossetVisible(boolean b){
+        for (int i = 0; i < BotonesCambios.size(); i++) {
+            BotonesCambios.get(i).setVisible(b);
+             }
+    }
+    
+    public void BotonesControlsetVisible(boolean b){
+        botonMenuCambio.setVisible(b);
+        botonMenuObjeto.setVisible(b);
     }
 }
