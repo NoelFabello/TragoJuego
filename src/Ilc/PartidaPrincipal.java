@@ -16,10 +16,14 @@ public class PartidaPrincipal extends JFrame {
     
     private Jugador jugadorIzquierda;
     private Jugador jugadorDerecha;
+    
     private Campo campo;
+    
     private PanelPrincipal principal;
+    
     private Mando mandoIzquierda;
     private Mando mandoDerecha;
+    
     private Lateral lateralIzquierdo;
     private Lateral lateralDerecho;
 
@@ -56,7 +60,8 @@ public class PartidaPrincipal extends JFrame {
         this.add(mandoDerecha);
         this.add(principal);
         this.add(lateralIzquierdo);
-        this.add(lateralDerecho);    }
+        this.add(lateralDerecho);    
+    }
     
     
     
