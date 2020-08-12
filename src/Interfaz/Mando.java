@@ -44,6 +44,7 @@ public class Mando extends JPanel{
         this.jugador = jugador;
         this.BotonesLucha = new ArrayList<>(4);
         this.BotonesCambios = new ArrayList<>(3);
+        this.BotonesObjetos = new ArrayList<>(6);
         
         BotonesLucha();
         BotonesCambios();
