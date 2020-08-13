@@ -25,8 +25,8 @@ public abstract class Personaje {
   private Estados estadosSexuales;
   private ArrayList<Ataque> ataques;
   private final Bonificaciones Tabla;
-  private ImageIcon imagenCercana;
-  private ImageIcon imagenLejana;
+  private ImageIcon imagenIzquierda;
+  private ImageIcon imagenDerecha;
 
   public Personaje(
       String nombre,
@@ -38,8 +38,8 @@ public abstract class Personaje {
       int precision,
       int velocidad,
       ArrayList<Ataque> ataques,
-      String imagenCercana,
-      String imagenLejana) {
+      String imagenIzq,
+      String imagenDer) {
     this.nombre = nombre;
     this.descripcion = descripcion;
     this.sexo = sexo;
@@ -55,8 +55,8 @@ public abstract class Personaje {
     this.ataques = ataques;
     Tabla = new Bonificaciones();
 
-    this.imagenCercana = new ImageIcon(imagenCercana);
-    this.imagenLejana = new ImageIcon(imagenLejana);
+    this.imagenIzquierda = new ImageIcon(imagenIzq);
+    this.imagenDerecha = new ImageIcon(imagenDer);
   }
 
   public String getNombre() {
@@ -115,14 +115,13 @@ public abstract class Personaje {
     this.velocidad = velocidad;
   }
 
-    public ImageIcon getImagenCercana() {
-        return imagenCercana;
+   public ImageIcon getImagenIzquierda() {
+        return imagenIzquierda;
     }
 
-    public ImageIcon getImagenLejana() {
-        return imagenLejana;
+   public ImageIcon getImagenDerecha() {
+        return imagenDerecha;
     }
-
   public int getVidaTotal() {
     return vidaTotal;
   }
@@ -347,5 +346,16 @@ public abstract class Personaje {
     } else if (objetivo.getEstadosSexuales() == Estados.EMPALMADO) {
       objetivo.setVelocidad(objetivo.getVelocidad() - 20);
     }
+  }
+  
+  public String Datos(){
+      StringBuilder toret = new StringBuilder();
+      toret.append(getNombre());
+      toret.append("-");
+      toret.append(getVidaActual());
+      toret.append("/");
+      toret.append(getVidaTotal());
+  
+    return toret.toString();
   }
 }

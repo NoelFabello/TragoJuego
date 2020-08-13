@@ -45,10 +45,10 @@ public class PartidaPrincipal extends JFrame {
         jugadorIzquierda = jugador1;
         jugadorDerecha = jugador2;
         
-        principal = new PanelPrincipal(jugadorIzquierda,jugadorDerecha,getWidth()*3/12, 0, getWidth()*6/12, getHeight()*2/3);
-        
         mandoIzquierda = new Mando(jugadorIzquierda, 0, getHeight()*2/3, getWidth()/2, getHeight()/3);
         mandoDerecha = new Mando(jugadorDerecha, getWidth()/2, getHeight()*2/3, getWidth()/2, getHeight()/3);
+        
+        principal = new PanelPrincipal(jugadorIzquierda,jugadorDerecha,getWidth()*3/12, 0, getWidth()*6/12, getHeight()*2/3);
         
         lateralIzquierdo = new Lateral(0, 0, getWidth()*3/12, getHeight()*2/3);
         lateralDerecho = new Lateral(getWidth()*9/12, 0, getWidth()*3/12, getHeight()*2/3);

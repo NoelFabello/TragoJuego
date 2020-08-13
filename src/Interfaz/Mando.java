@@ -82,7 +82,7 @@ public class Mando extends JPanel{
         atras.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-             atras.setVisible(true);
+             atras.setVisible(false);
              BotonesControlsetVisible(true);
              BotonesLuchasetVisible(true);
              BotonesCambiossetVisible(false);
@@ -125,10 +125,10 @@ public class Mando extends JPanel{
     
     public void BotonesCambios(){
         int i = getWidth()/3-120;
-        int j = 150;
-        BotonCambio(0,30,getHeight()/2-j,i,j);
-        BotonCambio(1,60+i,getHeight()/2-j,i,j);
-        BotonCambio(2,90+2*i,getHeight()/2-j,i,j);
+        int j = 200;
+        BotonCambio(0,30,getHeight()/2-140,i,j);
+        BotonCambio(1,60+i,getHeight()/2-140,i,j);
+        BotonCambio(2,90+2*i,getHeight()/2-140,i,j);
                 
         for (int s = 0; s < BotonesCambios.size(); s++) {
             add(BotonesCambios.get(s));
@@ -139,7 +139,7 @@ public class Mando extends JPanel{
         JButton boton = new JButton(jugador.getEquipo().get(personaje).getNombre());
         boton.setVisible(false);
         boton.setBounds(a, b, c, d);
-        boton.setIcon(new ImageIcon((jugador.getEquipo().get(personaje).getImagenCercana().getImage().getScaledInstance(boton.getWidth(), boton.getHeight(), FRAMEBITS))));
+        boton.setIcon(new ImageIcon((jugador.getEquipo().get(personaje).getImagenIzquierda().getImage().getScaledInstance(boton.getWidth(), boton.getHeight(), FRAMEBITS))));
         boton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {

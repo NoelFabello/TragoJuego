@@ -34,6 +34,8 @@ public class Control {
         e2.add(miranda2);
         Jugador jugador1 = new Jugador("J1",e1,null);
         Jugador jugador2 = new Jugador("J2",e2,null);
+        jugador1.setActivo(sulo);
+        jugador2.setActivo(miranda2);
         PartidaPrincipal p = new PartidaPrincipal(jugador1, jugador2);
     }
 }
