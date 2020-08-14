@@ -72,7 +72,9 @@ public class PartidaPrincipal extends JFrame {
             }else if (jugadorIzquierda.getDecision().isCambiar()&& jugadorDerecha.getDecision().isAtacar()) {
                 
             }else if (jugadorIzquierda.getDecision().isCambiar() && jugadorDerecha.getDecision().isCambiar()) {
-                
+                System.out.println("Los dos cambian");
+                jugadorIzquierda.cambiarActivo(jugadorIzquierda.getDecision().getCambio());
+                jugadorDerecha.cambiarActivo(jugadorDerecha.getDecision().getCambio());
             }
  
         }

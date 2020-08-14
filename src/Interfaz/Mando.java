@@ -179,7 +179,7 @@ public class Mando extends JPanel{
                     if (jugador.getActivo()==jugador.getEquipo().get(personaje)) {
                         throw new Exception(jugador.getActivo().getNombre()+" ya esta combatiendo");
                     } else {
-                        System.out.println("Guei");
+                        jugador.setDecisionTomada(true);
                         jugador.getDecision().setCambiar(true);
                         jugador.getDecision().setCambio(personaje);
                         partida.ComenzarTurno();
