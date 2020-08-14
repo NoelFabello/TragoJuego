@@ -26,7 +26,6 @@ public class PartidaPrincipal extends JFrame {
     
     private Lateral lateralIzquierdo;
     private Lateral lateralDerecho;
-
     
     public PartidaPrincipal(Jugador jugador1, Jugador jugador2) {
         
@@ -45,8 +44,8 @@ public class PartidaPrincipal extends JFrame {
         jugadorIzquierda = jugador1;
         jugadorDerecha = jugador2;
         
-        mandoIzquierda = new Mando(jugadorIzquierda, 0, getHeight()*2/3, getWidth()/2, getHeight()/3);
-        mandoDerecha = new Mando(jugadorDerecha, getWidth()/2, getHeight()*2/3, getWidth()/2, getHeight()/3);
+        mandoIzquierda = new Mando(jugadorIzquierda,jugadorDerecha ,0, getHeight()*2/3, getWidth()/2, getHeight()/3, this);
+        mandoDerecha = new Mando(jugadorDerecha,jugadorIzquierda, getWidth()/2, getHeight()*2/3, getWidth()/2, getHeight()/3, this);
         
         principal = new PanelPrincipal(jugadorIzquierda,jugadorDerecha,getWidth()*3/12, 0, getWidth()*6/12, getHeight()*2/3);
         
@@ -63,7 +62,22 @@ public class PartidaPrincipal extends JFrame {
         this.add(lateralDerecho);    
     }
     
+    public void ComenzarTurno(){
+        if (jugadorIzquierda.isDecisionTomada() && jugadorDerecha.isDecisionTomada()) {
+            
+            if (jugadorIzquierda.getDecision().isAtacar() && jugadorDerecha.getDecision().isAtacar()) {
+                
+            }else if (jugadorIzquierda.getDecision().isAtacar() && jugadorDerecha.getDecision().isCambiar()) {
+                
+            }else if (jugadorIzquierda.getDecision().isCambiar()&& jugadorDerecha.getDecision().isAtacar()) {
+                
+            }else if (jugadorIzquierda.getDecision().isCambiar() && jugadorDerecha.getDecision().isCambiar()) {
+                
+            }
+ 
+        }
     
+    }
     
     
     

@@ -17,12 +17,16 @@ public class Jugador {
     private ArrayList<Personaje> equipo;
     private Personaje activo;
     private ArrayList<Objeto> objetos;
-
+    private boolean decisionTomada;
+    private Decision decision;
+    
     public Jugador(String nombre, ArrayList<Personaje> equipo, ArrayList<Objeto> objetos) {
         this.nombre = nombre;
         this.equipo = equipo;
         this.activo = null;
         this.objetos = objetos;
+        this.decisionTomada = false;
+        this.decision = new Decision();
     }
 
     public String getNombre() {
@@ -56,8 +60,18 @@ public class Jugador {
     public void setObjetos(ArrayList<Objeto> objetos) {
         this.objetos = objetos;
     }
-    
-    
+
+    public boolean isDecisionTomada() {
+        return decisionTomada;
+    }
+
+    public void setDecisionTomada(boolean decisionTomada) {
+        this.decisionTomada = decisionTomada;
+    }
+
+    public Decision getDecision() {
+        return decision;
+    }
     
     public void elegirInicial(int personaje){
         activo = equipo.get(personaje);

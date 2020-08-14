@@ -5,10 +5,13 @@
  */
 package Interfaz;
 
+import Ilc.PartidaPrincipal;
 import Nucleo.Jugador;
 import Nucleo.Personaje;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -20,7 +23,10 @@ import javax.swing.JPanel;
  */
 public class Mando extends JPanel{
 
+    private PartidaPrincipal partida;
+    
     private Jugador jugador;
+    private Jugador rival;
     
     private ArrayList<JButton> BotonesLucha;
     private ArrayList<JButton> BotonesCambios;
@@ -33,7 +39,7 @@ public class Mando extends JPanel{
     private int largo;
     private int alto;
     
-    public Mando(Jugador jugador,int a,int b,int c,int d) {
+    public Mando(Jugador jugador,Jugador rival, int a,int b,int c,int d, PartidaPrincipal partida) {
         super();
         setLayout(null);
         setBounds(a, b, c, d);
@@ -41,7 +47,11 @@ public class Mando extends JPanel{
         largo = getWidth();
         alto = getHeight();
         
+        this.partida = partida;
+         
         this.jugador = jugador;
+        this.rival = rival;
+        
         this.BotonesLucha = new ArrayList<>(4);
         this.BotonesCambios = new ArrayList<>(3);
         this.BotonesObjetos = new ArrayList<>(6);
@@ -113,12 +123,34 @@ public class Mando extends JPanel{
     }
     
     public void BotonLucha(int ataque,int a,int b,int c,int d){
-        JButton boton = new JButton();
-        boton.setBounds(a, b, c, d);boton.addActionListener(new ActionListener() {
+        JButton boton = new JButton(jugador.getActivo().getAtaques().get(ataque).getNombre());
+        boton.setBounds(a, b, c, d);
+        boton.addMouseListener(new MouseListener() {
             @Override
-            public void actionPerformed(ActionEvent ae) {
+            public void mouseClicked(MouseEvent me) {
+                jugador.setDecisionTomada(true);
+                jugador.getDecision().setAtacar(true);
+                jugador.getDecision().setAtaque(ataque);
+                partida.ComenzarTurno();
+            }
+
+            @Override
+            public void mousePressed(MouseEvent me) {
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent me) {
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent me) {
                 
             }
+
+            @Override
+            public void mouseExited(MouseEvent me) {
+            }
+           
         });
         BotonesLucha.add(boton);
     }
@@ -143,7 +175,18 @@ public class Mando extends JPanel{
         boton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                
+                try {
+                    if (jugador.getActivo()==jugador.getEquipo().get(personaje)) {
+                        throw new Exception(jugador.getActivo().getNombre()+" ya esta combatiendo");
+                    } else {
+                        System.out.println("Guei");
+                        jugador.getDecision().setCambiar(true);
+                        jugador.getDecision().setCambio(personaje);
+                        partida.ComenzarTurno();
+                    }
+                } catch (Exception exc) {
+                    
+                }
             }
         });
         BotonesCambios.add(boton);
