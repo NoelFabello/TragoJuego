@@ -28,8 +28,6 @@ public class PartidaPrincipal extends JFrame {
     private Lateral lateralDerecho;
     
     public PartidaPrincipal(Jugador jugador1, Jugador jugador2) {
-        
-        super();
         this.setVisible(true);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setBounds(0, 0, 1938, 1048);

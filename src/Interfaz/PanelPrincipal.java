@@ -7,9 +7,11 @@ package Interfaz;
 
 import Nucleo.Jugador;
 import static java.awt.Color.BLUE;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JLabel;
 
 
 import javax.swing.JPanel;
@@ -27,12 +29,12 @@ public class PanelPrincipal extends JPanel{
     private Timer timer;
     
     public PanelPrincipal(Jugador izq,Jugador der,int a,int b,int c,int d){
-        super();
-        
+        this.setLayout(null);
+        setVisible(true);
         jugadorIzquierda = izq;
         jugadorDerecha = der;
         
-        this.timer = new Timer(3000, new ActionListener() {
+        this.timer = new Timer(8000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 repaint();
@@ -50,9 +52,11 @@ public class PanelPrincipal extends JPanel{
         super.paint(g);
         g.drawImage(jugadorIzquierda.getActivo().getImagenIzquierda().getImage(), getWidth()/6, getHeight()/5, 200, 500, this);
         g.drawImage(jugadorDerecha.getActivo().getImagenDerecha().getImage(), getWidth()*4/6, getHeight()/5, 200, 500, this);
-//        g.drawString(jugadorIzquierda.getActivo().Datos(), getWidth()/6, getHeight()/5-20);
-//        g.drawString(jugadorDerecha.getActivo().Datos(), getWidth()*4/6, getHeight()/5-20);
-//        g.
+        Font letra = new Font("Arial",Font.ROMAN_BASELINE,30);
+        g.setFont(letra);
+        g.drawString(jugadorIzquierda.getActivo().Datos(), getWidth()/6, getHeight()/5);
+        g.drawString(jugadorDerecha.getActivo().Datos(), getWidth()*4/6, getHeight()/5);
+
     
     }
 }

@@ -40,10 +40,9 @@ public class Mando extends JPanel{
     private int alto;
     
     public Mando(Jugador jugador,Jugador rival, int a,int b,int c,int d, PartidaPrincipal partida) {
-        super();
         setLayout(null);
         setBounds(a, b, c, d);
-        
+        setVisible(true);
         largo = getWidth();
         alto = getHeight();
         

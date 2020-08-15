@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 public class Lateral extends JPanel{
     
     public Lateral(int a,int b,int c,int d) {
-        super();
         setBounds(a, b, c, d);
+        setVisible(true);
     }
 }

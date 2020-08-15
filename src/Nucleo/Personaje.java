@@ -351,9 +351,9 @@ public abstract class Personaje {
   public String Datos(){
       StringBuilder toret = new StringBuilder();
       toret.append(getNombre());
-      toret.append("-");
+      toret.append(" - ");
       toret.append(getVidaActual());
-      toret.append("/");
+      toret.append(" / ");
       toret.append(getVidaTotal());
   
     return toret.toString();
