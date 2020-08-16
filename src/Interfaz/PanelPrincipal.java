@@ -34,7 +34,7 @@ public class PanelPrincipal extends JPanel{
         jugadorIzquierda = izq;
         jugadorDerecha = der;
         
-        this.timer = new Timer(8000, new ActionListener() {
+        this.timer = new Timer(800, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 repaint();
