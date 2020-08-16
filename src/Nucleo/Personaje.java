@@ -348,6 +348,22 @@ public abstract class Personaje {
     }
   }
   
+  public boolean AtacaPrimero(Personaje rival){
+      if (getVelocidad() > rival.getVelocidad()) {
+          return true;
+      }else if(getVelocidad() < rival.getVelocidad()){
+          return false;
+      }else{
+          Random r = new Random();
+          if (r.nextInt(100)<50) {
+              return true;
+          }else{
+              return false;
+          }
+      
+      }
+  }
+  
   public String Datos(){
       StringBuilder toret = new StringBuilder();
       toret.append(getNombre());

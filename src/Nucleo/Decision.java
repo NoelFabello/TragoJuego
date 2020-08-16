@@ -12,8 +12,10 @@ package Nucleo;
 public class Decision {
     private boolean atacar;
     private boolean cambiar;
+    private boolean usarObjeto;
     private int ataque;
     private int cambio;
+    private int objeto;
 
     public Decision() {
         this.atacar = false;
@@ -53,7 +55,20 @@ public class Decision {
     public void setCambio(int cambio) {
         this.cambio = cambio;
     }
-    
-    
-    
+
+    public boolean isUsarObjeto() {
+        return usarObjeto;
+    }
+
+    public void setUsarObjeto(boolean usarObjeto) {
+        this.usarObjeto = usarObjeto;
+    }
+
+    public int getObjeto() {
+        return objeto;
+    }
+
+    public void setObjeto(int objeto) {
+        this.objeto = objeto;
+    }
 }
