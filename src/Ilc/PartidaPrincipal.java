@@ -8,6 +8,7 @@ import Nucleo.Jugador;
 import java.awt.Color;
 import static java.awt.Color.BLUE;
 import static java.awt.Color.red;
+import java.util.Random;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -62,124 +63,138 @@ public class PartidaPrincipal extends JFrame {
     
     public void ComenzarTurno(){
         if (jugadorIzquierda.isDecisionTomada() && jugadorDerecha.isDecisionTomada()) {
-            
-            if(jugadorIzquierda.getDecision().isAtacar() && jugadorDerecha.getDecision().isAtacar()) {
-                
-                if (jugadorIzquierda.getActivo().AtacaPrimero(jugadorDerecha.getActivo())) {
-                    
-                    jugadorIzquierda.getActivo().atacarHabilidad(jugadorIzquierda.getDecision().getAtaque(), jugadorDerecha.getActivo());
-                    jugadorDerecha.getActivo().atacarHabilidad(jugadorDerecha.getDecision().getAtaque(), jugadorIzquierda.getActivo());
-                
-                }else{
-                    
-                    jugadorDerecha.getActivo().atacarHabilidad(jugadorDerecha.getDecision().getAtaque(), jugadorIzquierda.getActivo());
-                    jugadorIzquierda.getActivo().atacarHabilidad(jugadorIzquierda.getDecision().getAtaque(), jugadorDerecha.getActivo());
-                
-                }
-                
-            }else if (jugadorIzquierda.getDecision().isAtacar() && jugadorDerecha.getDecision().isCambiar()) {
-                
-                if (jugadorIzquierda.getActivo().AtacaPrimero(jugadorDerecha.getActivo())) {
-                    
-                    jugadorIzquierda.getActivo().atacarHabilidad(jugadorIzquierda.getDecision().getAtaque(), jugadorDerecha.getActivo());
-                    jugadorDerecha.cambiarActivo(jugadorDerecha.getDecision().getCambio());
-               
-                }else{
-                    
-                    jugadorDerecha.cambiarActivo(jugadorDerecha.getDecision().getCambio());
-                    jugadorIzquierda.getActivo().atacarHabilidad(jugadorIzquierda.getDecision().getAtaque(), jugadorDerecha.getActivo());
-                
-                }
-                
-            }else if (jugadorIzquierda.getDecision().isCambiar() && jugadorDerecha.getDecision().isAtacar()) {
-                
-                if (jugadorIzquierda.getActivo().AtacaPrimero(jugadorDerecha.getActivo())) {
-                    
-                    jugadorIzquierda.cambiarActivo(jugadorIzquierda.getDecision().getCambio());
-                    jugadorDerecha.getActivo().atacarHabilidad(jugadorDerecha.getDecision().getAtaque(), jugadorIzquierda.getActivo());
-                
-                }else{
-                    
-                    jugadorDerecha.getActivo().atacarHabilidad(jugadorDerecha.getDecision().getAtaque(), jugadorIzquierda.getActivo());
-                    jugadorIzquierda.cambiarActivo(jugadorIzquierda.getDecision().getCambio());
-               
-                }
-                
-            }else if (jugadorIzquierda.getDecision().isCambiar() && jugadorDerecha.getDecision().isCambiar()) {
-                if (jugadorIzquierda.getActivo().AtacaPrimero(jugadorDerecha.getActivo())) {
-                    
-                    jugadorIzquierda.cambiarActivo(jugadorIzquierda.getDecision().getCambio());
-                    jugadorDerecha.cambiarActivo(jugadorDerecha.getDecision().getCambio());
-                    
-                }else{
-                    
-                    jugadorDerecha.cambiarActivo(jugadorDerecha.getDecision().getCambio());
-                    jugadorIzquierda.cambiarActivo(jugadorIzquierda.getDecision().getCambio());
-                    
-                }
-            }else if (jugadorIzquierda.getDecision().isAtacar() && jugadorDerecha.getDecision().isUsarObjeto()) {
-                
-                if (jugadorIzquierda.getActivo().AtacaPrimero(jugadorDerecha.getActivo())) {
-                    
-                    jugadorIzquierda.getActivo().atacarHabilidad(jugadorIzquierda.getDecision().getAtaque(), jugadorDerecha.getActivo());
-                    jugadorDerecha.getActivo().usarObjeto(jugadorDerecha.getObjetos().get(jugadorDerecha.getDecision().getObjeto()), jugadorIzquierda.getActivo());
-                
-                }else{
-                    
-                    jugadorDerecha.getActivo().usarObjeto(jugadorDerecha.getObjetos().get(jugadorDerecha.getDecision().getObjeto()), jugadorIzquierda.getActivo());
-                    jugadorIzquierda.getActivo().atacarHabilidad(jugadorIzquierda.getDecision().getAtaque(), jugadorDerecha.getActivo());
-                    
-                }
-                
-            }else if (jugadorIzquierda.getDecision().isCambiar() && jugadorDerecha.getDecision().isUsarObjeto()) {
-                
-                if (jugadorIzquierda.getActivo().AtacaPrimero(jugadorDerecha.getActivo())) {
-                    
-                    jugadorIzquierda.cambiarActivo(jugadorIzquierda.getDecision().getCambio());
-                    jugadorDerecha.getActivo().usarObjeto(jugadorDerecha.getObjetos().get(jugadorDerecha.getDecision().getObjeto()), jugadorIzquierda.getActivo());
-                
-                }else{
-                    
-                    jugadorDerecha.getActivo().usarObjeto(jugadorDerecha.getObjetos().get(jugadorDerecha.getDecision().getObjeto()), jugadorIzquierda.getActivo());
-                    jugadorIzquierda.cambiarActivo(jugadorIzquierda.getDecision().getCambio());
-                    
-                }
-                
-            }else if (jugadorIzquierda.getDecision().isUsarObjeto() && jugadorDerecha.getDecision().isAtacar()) {
-                
-                if (jugadorIzquierda.getActivo().AtacaPrimero(jugadorDerecha.getActivo())) {
-                    
-                    jugadorIzquierda.getActivo().usarObjeto(jugadorIzquierda.getObjetos().get(jugadorIzquierda.getDecision().getObjeto()), jugadorDerecha.getActivo());
-                    jugadorDerecha.getActivo().atacarHabilidad(jugadorDerecha.getDecision().getAtaque(), jugadorIzquierda.getActivo());
-                    
-                }else{
-                    
-                    jugadorDerecha.getActivo().atacarHabilidad(jugadorDerecha.getDecision().getAtaque(), jugadorIzquierda.getActivo());
-                    jugadorIzquierda.getActivo().usarObjeto(jugadorIzquierda.getObjetos().get(jugadorIzquierda.getDecision().getObjeto()), jugadorDerecha.getActivo());
-                
-                }
-                
-            }else if (jugadorIzquierda.getDecision().isUsarObjeto() && jugadorDerecha.getDecision().isCambiar()) {
-                
-                if (jugadorIzquierda.getActivo().AtacaPrimero(jugadorDerecha.getActivo())) {
-                    
-                    jugadorIzquierda.getActivo().usarObjeto(jugadorIzquierda.getObjetos().get(jugadorIzquierda.getDecision().getObjeto()), jugadorDerecha.getActivo());
-                    jugadorDerecha.cambiarActivo(jugadorDerecha.getDecision().getCambio());
-                }else{
-                    
-                    
-                    jugadorDerecha.cambiarActivo(jugadorDerecha.getDecision().getCambio());
-                    jugadorIzquierda.getActivo().usarObjeto(jugadorIzquierda.getObjetos().get(jugadorIzquierda.getDecision().getObjeto()), jugadorDerecha.getActivo());
-                
-                }
-            }
+           
+            LosIfs();
             
             jugadorIzquierda.setDecisionTomada(false);
             jugadorDerecha.setDecisionTomada(false);
-                    }
     
+        }
     }
     
+    public void LosIfs(){
     
+        if (jugadorIzquierda.getActivo().AtacaPrimero(jugadorDerecha.getActivo())) {
+            
+            Jugador1Primero();
+            
+        } else if (jugadorIzquierda.getActivo().AtacaPrimero(jugadorDerecha.getActivo())) {
+            
+            Jugador2Primero();
+        
+        }else{
+        
+            Random rnd = new Random();
+            if (rnd.nextBoolean() == true) {
+                Jugador1Primero();
+            }else{
+                Jugador2Primero();
+            }
+            
+        }
+    
+    }
+
+    private void Jugador1Primero() {
+    
+        if (jugadorIzquierda.getDecision().isAtacar() && jugadorDerecha.getDecision().isAtacar()) {
+            
+            jugadorIzquierda.getActivo().atacarHabilidad(jugadorIzquierda.getDecision().getAtaque(), jugadorDerecha.getActivo());
+            jugadorDerecha.getActivo().atacarHabilidad(jugadorDerecha.getDecision().getAtaque(), jugadorIzquierda.getActivo());
+                
+        }else if (jugadorIzquierda.getDecision().isAtacar() && jugadorDerecha.getDecision().isCambiar()) {
+            
+            jugadorIzquierda.getActivo().atacarHabilidad(jugadorIzquierda.getDecision().getAtaque(), jugadorDerecha.getActivo());
+            jugadorDerecha.cambiarActivo(jugadorDerecha.getDecision().getCambio());
+
+        }else if (jugadorIzquierda.getDecision().isCambiar() && jugadorDerecha.getDecision().isAtacar()) {
+            
+            jugadorIzquierda.cambiarActivo(jugadorIzquierda.getDecision().getCambio());
+            jugadorDerecha.getActivo().atacarHabilidad(jugadorDerecha.getDecision().getAtaque(), jugadorIzquierda.getActivo());
+                    
+        }else if (jugadorIzquierda.getDecision().isCambiar() && jugadorDerecha.getDecision().isCambiar()) {
+            
+            jugadorIzquierda.cambiarActivo(jugadorIzquierda.getDecision().getCambio());
+            jugadorDerecha.cambiarActivo(jugadorDerecha.getDecision().getCambio());
+                    
+        }else if (jugadorIzquierda.getDecision().isAtacar() && jugadorDerecha.getDecision().isUsarObjeto()) {
+            
+            jugadorIzquierda.getActivo().atacarHabilidad(jugadorIzquierda.getDecision().getAtaque(), jugadorDerecha.getActivo());
+            jugadorDerecha.getActivo().usarObjeto(jugadorDerecha.getObjetos().get(jugadorDerecha.getDecision().getObjeto()), jugadorIzquierda.getActivo());
+                    
+        }else if (jugadorIzquierda.getDecision().isCambiar() && jugadorDerecha.getDecision().isUsarObjeto()) {
+             
+            jugadorIzquierda.cambiarActivo(jugadorIzquierda.getDecision().getCambio());
+            jugadorDerecha.getActivo().usarObjeto(jugadorDerecha.getObjetos().get(jugadorDerecha.getDecision().getObjeto()), jugadorIzquierda.getActivo());
+                
+        }else if (jugadorIzquierda.getDecision().isUsarObjeto() && jugadorDerecha.getDecision().isAtacar()) {
+            
+            jugadorIzquierda.getActivo().usarObjeto(jugadorIzquierda.getObjetos().get(jugadorIzquierda.getDecision().getObjeto()), jugadorDerecha.getActivo());
+            jugadorDerecha.getActivo().atacarHabilidad(jugadorDerecha.getDecision().getAtaque(), jugadorIzquierda.getActivo());
+                    
+        }else if (jugadorIzquierda.getDecision().isUsarObjeto() && jugadorDerecha.getDecision().isCambiar()) {
+            
+            jugadorIzquierda.getActivo().usarObjeto(jugadorIzquierda.getObjetos().get(jugadorIzquierda.getDecision().getObjeto()), jugadorDerecha.getActivo());
+            jugadorDerecha.cambiarActivo(jugadorDerecha.getDecision().getCambio());
+                    
+        }else if (jugadorIzquierda.getDecision().isUsarObjeto() && jugadorDerecha.getDecision().isUsarObjeto()) {
+            
+            jugadorIzquierda.getActivo().usarObjeto(jugadorIzquierda.getObjetos().get(jugadorIzquierda.getDecision().getObjeto()), jugadorDerecha.getActivo());
+            jugadorDerecha.getActivo().usarObjeto(jugadorDerecha.getObjetos().get(jugadorDerecha.getDecision().getObjeto()), jugadorIzquierda.getActivo());
+        
+        }
+    }
+
+    private void Jugador2Primero() {
+     
+        if (jugadorIzquierda.getDecision().isAtacar() && jugadorDerecha.getDecision().isAtacar()) {
+            
+            jugadorDerecha.getActivo().atacarHabilidad(jugadorDerecha.getDecision().getAtaque(), jugadorIzquierda.getActivo());
+            jugadorIzquierda.getActivo().atacarHabilidad(jugadorIzquierda.getDecision().getAtaque(), jugadorDerecha.getActivo());
+            
+        }else if (jugadorIzquierda.getDecision().isAtacar() && jugadorDerecha.getDecision().isCambiar()) {
+            
+            jugadorDerecha.cambiarActivo(jugadorDerecha.getDecision().getCambio());
+            jugadorIzquierda.getActivo().atacarHabilidad(jugadorIzquierda.getDecision().getAtaque(), jugadorDerecha.getActivo());
+                    
+        }else if (jugadorIzquierda.getDecision().isCambiar() && jugadorDerecha.getDecision().isAtacar()) {
+            
+            jugadorDerecha.getActivo().atacarHabilidad(jugadorDerecha.getDecision().getAtaque(), jugadorIzquierda.getActivo());
+            jugadorIzquierda.cambiarActivo(jugadorIzquierda.getDecision().getCambio());
+
+        }else if (jugadorIzquierda.getDecision().isCambiar() && jugadorDerecha.getDecision().isCambiar()) {
+            
+            jugadorDerecha.cambiarActivo(jugadorDerecha.getDecision().getCambio());
+            jugadorIzquierda.cambiarActivo(jugadorIzquierda.getDecision().getCambio());
+                    
+        }else if (jugadorIzquierda.getDecision().isAtacar() && jugadorDerecha.getDecision().isUsarObjeto()) {
+            
+            jugadorDerecha.getActivo().usarObjeto(jugadorDerecha.getObjetos().get(jugadorDerecha.getDecision().getObjeto()), jugadorIzquierda.getActivo());
+            jugadorIzquierda.getActivo().atacarHabilidad(jugadorIzquierda.getDecision().getAtaque(), jugadorDerecha.getActivo());
+                    
+        }else if (jugadorIzquierda.getDecision().isCambiar() && jugadorDerecha.getDecision().isUsarObjeto()) {
+            
+            jugadorDerecha.getActivo().usarObjeto(jugadorDerecha.getObjetos().get(jugadorDerecha.getDecision().getObjeto()), jugadorIzquierda.getActivo());
+            jugadorIzquierda.cambiarActivo(jugadorIzquierda.getDecision().getCambio());
+                    
+        }else if (jugadorIzquierda.getDecision().isUsarObjeto() && jugadorDerecha.getDecision().isAtacar()) {
+            
+            jugadorDerecha.getActivo().atacarHabilidad(jugadorDerecha.getDecision().getAtaque(), jugadorIzquierda.getActivo());
+            jugadorIzquierda.getActivo().usarObjeto(jugadorIzquierda.getObjetos().get(jugadorIzquierda.getDecision().getObjeto()), jugadorDerecha.getActivo());
+                
+        }else if (jugadorIzquierda.getDecision().isUsarObjeto() && jugadorDerecha.getDecision().isCambiar()) {
+            
+            jugadorDerecha.cambiarActivo(jugadorDerecha.getDecision().getCambio());
+            jugadorIzquierda.getActivo().usarObjeto(jugadorIzquierda.getObjetos().get(jugadorIzquierda.getDecision().getObjeto()), jugadorDerecha.getActivo());
+                
+        }else if (jugadorIzquierda.getDecision().isUsarObjeto() && jugadorDerecha.getDecision().isUsarObjeto()) {
+        
+            jugadorDerecha.getActivo().usarObjeto(jugadorDerecha.getObjetos().get(jugadorDerecha.getDecision().getObjeto()), jugadorIzquierda.getActivo());    
+            jugadorIzquierda.getActivo().usarObjeto(jugadorIzquierda.getObjetos().get(jugadorIzquierda.getDecision().getObjeto()), jugadorDerecha.getActivo());
+                
+        }
+        
+    }
+   
     
 }
