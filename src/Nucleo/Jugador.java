@@ -73,6 +73,12 @@ public class Jugador {
         return decision;
     }
     
+    public void decisionesFalse(){
+        this.getDecision().setAtacar(false);
+        this.getDecision().setUsarObjeto(false);
+        this.getDecision().setCambiar(false);
+    }
+    
     public void elegirInicial(int personaje){
         activo = equipo.get(personaje);
         equipo.remove(personaje);

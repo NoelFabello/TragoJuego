@@ -40,6 +40,7 @@ public class Mando extends JPanel{
     private int alto;
     
     public Mando(Jugador jugador,Jugador rival, int a,int b,int c,int d, PartidaPrincipal partida) {
+        
         setLayout(null);
         setBounds(a, b, c, d);
         setVisible(true);
@@ -129,6 +130,8 @@ public class Mando extends JPanel{
             public void mouseClicked(MouseEvent me) {
                 jugador.setDecisionTomada(true);
                 jugador.getDecision().setAtacar(true);
+                jugador.getDecision().setCambiar(false);
+                jugador.getDecision().setUsarObjeto(false);
                 jugador.getDecision().setAtaque(ataque);
                 partida.ComenzarTurno();
             }
@@ -180,11 +183,13 @@ public class Mando extends JPanel{
                     } else {
                         jugador.setDecisionTomada(true);
                         jugador.getDecision().setCambiar(true);
+                        jugador.getDecision().setAtacar(false);
+                        jugador.getDecision().setUsarObjeto(false);
                         jugador.getDecision().setCambio(personaje);
                         partida.ComenzarTurno();
                     }
                 } catch (Exception exc) {
-                    
+                    System.err.println(exc.getMessage());
                 }
             }
         });
