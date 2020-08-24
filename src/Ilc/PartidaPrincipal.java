@@ -9,6 +9,8 @@ import java.awt.Color;
 import static java.awt.Color.BLUE;
 import static java.awt.Color.red;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -48,8 +50,8 @@ public class PartidaPrincipal extends JFrame {
         
         principal = new PanelPrincipal(jugadorIzquierda,jugadorDerecha,getWidth()*3/12, 0, getWidth()*6/12, getHeight()*2/3);
         
-        lateralIzquierdo = new Lateral(0, 0, getWidth()*3/12, getHeight()*2/3);
-        lateralDerecho = new Lateral(getWidth()*9/12, 0, getWidth()*3/12, getHeight()*2/3);
+        lateralIzquierdo = new Lateral(jugadorIzquierda,0, 0, getWidth()*3/12, getHeight()*2/3);
+        lateralDerecho = new Lateral(jugadorDerecha,getWidth()*9/12, 0, getWidth()*3/12, getHeight()*2/3);
         
         mandoIzquierda.setBackground(Color.yellow);
         mandoDerecha.setBackground(Color.black);
@@ -61,19 +63,30 @@ public class PartidaPrincipal extends JFrame {
         this.add(lateralDerecho);    
     }
     
-    public void ComenzarTurno(){
+    public void ComenzarTurno() throws InterruptedException{
         if (jugadorIzquierda.isDecisionTomada() && jugadorDerecha.isDecisionTomada()) {
-           
-            LosIfs();
+            Runnable runnable = new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        LosIfs();
+                    } catch (InterruptedException ex) {
+                        System.out.println("Puta madre wey");
+                    }
             
             jugadorIzquierda.setDecisionTomada(false);
             jugadorDerecha.setDecisionTomada(false);
             jugadorIzquierda.decisionesFalse();
             jugadorIzquierda.decisionesFalse();
+                }
+            };
+            Thread thread = new Thread(runnable);
+            thread.start();
         }
+        
     }
     
-    public void LosIfs(){
+    public void LosIfs() throws InterruptedException{
     
         if (jugadorIzquierda.getActivo().AtacaPrimero(jugadorDerecha.getActivo())) {
             
@@ -99,101 +112,119 @@ public class PartidaPrincipal extends JFrame {
     
     }
 
-    private void Jugador1Primero() {
+    private void Jugador1Primero() throws InterruptedException {
     
         if (jugadorIzquierda.getDecision().isAtacar() && jugadorDerecha.getDecision().isAtacar()) {
             
             jugadorDerecha.getActivo().setVidaActual(jugadorIzquierda.getActivo().atacarHabilidad(jugadorIzquierda.getDecision().getAtaque(), jugadorDerecha.getActivo()));
+            Thread.sleep(2000);
             jugadorIzquierda.getActivo().setVidaActual(jugadorDerecha.getActivo().atacarHabilidad(jugadorDerecha.getDecision().getAtaque(), jugadorIzquierda.getActivo()));
                 
         }else if (jugadorIzquierda.getDecision().isAtacar() && jugadorDerecha.getDecision().isCambiar()) {
             
             jugadorDerecha.getActivo().setVidaActual(jugadorIzquierda.getActivo().atacarHabilidad(jugadorIzquierda.getDecision().getAtaque(), jugadorDerecha.getActivo()));
+            Thread.sleep(2000);
             jugadorDerecha.cambiarActivo(jugadorDerecha.getDecision().getCambio());
 
         }else if (jugadorIzquierda.getDecision().isCambiar() && jugadorDerecha.getDecision().isAtacar()) {
             
             jugadorIzquierda.cambiarActivo(jugadorIzquierda.getDecision().getCambio());
+            Thread.sleep(2000);
             jugadorIzquierda.getActivo().setVidaActual(jugadorDerecha.getActivo().atacarHabilidad(jugadorDerecha.getDecision().getAtaque(), jugadorIzquierda.getActivo()));
                     
         }else if (jugadorIzquierda.getDecision().isCambiar() && jugadorDerecha.getDecision().isCambiar()) {
             
             jugadorIzquierda.cambiarActivo(jugadorIzquierda.getDecision().getCambio());
+            Thread.sleep(2000);
             jugadorDerecha.cambiarActivo(jugadorDerecha.getDecision().getCambio());
                     
         }else if (jugadorIzquierda.getDecision().isAtacar() && jugadorDerecha.getDecision().isUsarObjeto()) {
             
             jugadorDerecha.getActivo().setVidaActual(jugadorIzquierda.getActivo().atacarHabilidad(jugadorIzquierda.getDecision().getAtaque(), jugadorDerecha.getActivo()));
+            Thread.sleep(2000);
             jugadorDerecha.getActivo().usarObjeto(jugadorDerecha.getObjetos().get(jugadorDerecha.getDecision().getObjeto()), jugadorIzquierda.getActivo());
                     
         }else if (jugadorIzquierda.getDecision().isCambiar() && jugadorDerecha.getDecision().isUsarObjeto()) {
              
             jugadorIzquierda.cambiarActivo(jugadorIzquierda.getDecision().getCambio());
+            Thread.sleep(2000);
             jugadorDerecha.getActivo().usarObjeto(jugadorDerecha.getObjetos().get(jugadorDerecha.getDecision().getObjeto()), jugadorIzquierda.getActivo());
                 
         }else if (jugadorIzquierda.getDecision().isUsarObjeto() && jugadorDerecha.getDecision().isAtacar()) {
             
             jugadorIzquierda.getActivo().usarObjeto(jugadorIzquierda.getObjetos().get(jugadorIzquierda.getDecision().getObjeto()), jugadorDerecha.getActivo());
+            Thread.sleep(2000);
             jugadorIzquierda.getActivo().setVidaActual(jugadorDerecha.getActivo().atacarHabilidad(jugadorDerecha.getDecision().getAtaque(), jugadorIzquierda.getActivo()));
                     
         }else if (jugadorIzquierda.getDecision().isUsarObjeto() && jugadorDerecha.getDecision().isCambiar()) {
             
             jugadorIzquierda.getActivo().usarObjeto(jugadorIzquierda.getObjetos().get(jugadorIzquierda.getDecision().getObjeto()), jugadorDerecha.getActivo());
+            Thread.sleep(2000);
             jugadorDerecha.cambiarActivo(jugadorDerecha.getDecision().getCambio());
                     
         }else if (jugadorIzquierda.getDecision().isUsarObjeto() && jugadorDerecha.getDecision().isUsarObjeto()) {
             
             jugadorIzquierda.getActivo().usarObjeto(jugadorIzquierda.getObjetos().get(jugadorIzquierda.getDecision().getObjeto()), jugadorDerecha.getActivo());
+            Thread.sleep(2000);
             jugadorDerecha.getActivo().usarObjeto(jugadorDerecha.getObjetos().get(jugadorDerecha.getDecision().getObjeto()), jugadorIzquierda.getActivo());
         
         }
     }
 
-    private void Jugador2Primero() {
+    private void Jugador2Primero() throws InterruptedException {
      
         if (jugadorIzquierda.getDecision().isAtacar() && jugadorDerecha.getDecision().isAtacar()) {
             
             jugadorIzquierda.getActivo().setVidaActual(jugadorDerecha.getActivo().atacarHabilidad(jugadorDerecha.getDecision().getAtaque(), jugadorIzquierda.getActivo()));
+            Thread.sleep(2000);
             jugadorDerecha.getActivo().setVidaActual(jugadorIzquierda.getActivo().atacarHabilidad(jugadorIzquierda.getDecision().getAtaque(), jugadorDerecha.getActivo()));
             
         }else if (jugadorIzquierda.getDecision().isAtacar() && jugadorDerecha.getDecision().isCambiar()) {
             
             jugadorDerecha.cambiarActivo(jugadorDerecha.getDecision().getCambio());
+            Thread.sleep(2000);
             jugadorDerecha.getActivo().setVidaActual(jugadorIzquierda.getActivo().atacarHabilidad(jugadorIzquierda.getDecision().getAtaque(), jugadorDerecha.getActivo()));
                     
         }else if (jugadorIzquierda.getDecision().isCambiar() && jugadorDerecha.getDecision().isAtacar()) {
             
             jugadorIzquierda.getActivo().setVidaActual(jugadorDerecha.getActivo().atacarHabilidad(jugadorDerecha.getDecision().getAtaque(), jugadorIzquierda.getActivo()));
+            Thread.sleep(2000);
             jugadorIzquierda.cambiarActivo(jugadorIzquierda.getDecision().getCambio());
 
         }else if (jugadorIzquierda.getDecision().isCambiar() && jugadorDerecha.getDecision().isCambiar()) {
             
             jugadorDerecha.cambiarActivo(jugadorDerecha.getDecision().getCambio());
+            Thread.sleep(2000);
             jugadorIzquierda.cambiarActivo(jugadorIzquierda.getDecision().getCambio());
                     
         }else if (jugadorIzquierda.getDecision().isAtacar() && jugadorDerecha.getDecision().isUsarObjeto()) {
             
             jugadorDerecha.getActivo().usarObjeto(jugadorDerecha.getObjetos().get(jugadorDerecha.getDecision().getObjeto()), jugadorIzquierda.getActivo());
+            Thread.sleep(2000);
             jugadorDerecha.getActivo().setVidaActual(jugadorIzquierda.getActivo().atacarHabilidad(jugadorIzquierda.getDecision().getAtaque(), jugadorDerecha.getActivo()));
                     
         }else if (jugadorIzquierda.getDecision().isCambiar() && jugadorDerecha.getDecision().isUsarObjeto()) {
             
             jugadorDerecha.getActivo().usarObjeto(jugadorDerecha.getObjetos().get(jugadorDerecha.getDecision().getObjeto()), jugadorIzquierda.getActivo());
+            Thread.sleep(2000);
             jugadorIzquierda.cambiarActivo(jugadorIzquierda.getDecision().getCambio());
                     
         }else if (jugadorIzquierda.getDecision().isUsarObjeto() && jugadorDerecha.getDecision().isAtacar()) {
             
             jugadorIzquierda.getActivo().setVidaActual(jugadorDerecha.getActivo().atacarHabilidad(jugadorDerecha.getDecision().getAtaque(), jugadorIzquierda.getActivo()));
+            Thread.sleep(2000);
             jugadorIzquierda.getActivo().usarObjeto(jugadorIzquierda.getObjetos().get(jugadorIzquierda.getDecision().getObjeto()), jugadorDerecha.getActivo());
                 
         }else if (jugadorIzquierda.getDecision().isUsarObjeto() && jugadorDerecha.getDecision().isCambiar()) {
             
             jugadorDerecha.cambiarActivo(jugadorDerecha.getDecision().getCambio());
+            Thread.sleep(2000);
             jugadorIzquierda.getActivo().usarObjeto(jugadorIzquierda.getObjetos().get(jugadorIzquierda.getDecision().getObjeto()), jugadorDerecha.getActivo());
                 
         }else if (jugadorIzquierda.getDecision().isUsarObjeto() && jugadorDerecha.getDecision().isUsarObjeto()) {
         
             jugadorDerecha.getActivo().usarObjeto(jugadorDerecha.getObjetos().get(jugadorDerecha.getDecision().getObjeto()), jugadorIzquierda.getActivo());    
+            Thread.sleep(2000);
             jugadorIzquierda.getActivo().usarObjeto(jugadorIzquierda.getObjetos().get(jugadorIzquierda.getDecision().getObjeto()), jugadorDerecha.getActivo());
                 
         }

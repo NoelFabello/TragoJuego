@@ -19,6 +19,7 @@ public class Jugador {
     private ArrayList<Objeto> objetos;
     private boolean decisionTomada;
     private Decision decision;
+    private int dinero;
     
     public Jugador(String nombre, ArrayList<Personaje> equipo, ArrayList<Objeto> objetos) {
         this.nombre = nombre;
@@ -27,6 +28,7 @@ public class Jugador {
         this.objetos = objetos;
         this.decisionTomada = false;
         this.decision = new Decision();
+        this.dinero = 0;
     }
 
     public String getNombre() {
@@ -71,6 +73,20 @@ public class Jugador {
 
     public Decision getDecision() {
         return decision;
+    }
+
+    public int getDinero() {
+        return dinero;
+    }
+    
+    public String getDineroString(){
+        StringBuilder toret = new StringBuilder();
+        toret.append(dinero);
+        return toret.toString();
+    }
+    
+    public void setDinero(int dinero) {
+        this.dinero = dinero;
     }
     
     public void decisionesFalse(){

@@ -5,16 +5,26 @@
  */
 package Interfaz;
 
-import javax.swing.JPanel;
+import Nucleo.Jugador;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 /**
  *
  * @author saul
  */
-public class Lateral extends JPanel{
+public class Lateral extends JLabel{
     
-    public Lateral(int a,int b,int c,int d) {
+    private Jugador jugador;
+    
+    public Lateral(Jugador j,int a,int b,int c,int d) {
+        setLayout(null);
         setBounds(a, b, c, d);
         setVisible(true);
+        jugador = j;
+        this.setBackground(Color.GREEN);
     }
 }
