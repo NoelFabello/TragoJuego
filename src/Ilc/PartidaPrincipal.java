@@ -1,6 +1,5 @@
 package Ilc;
 
-import Interfaz.Lateral;
 import Interfaz.Mando;
 import Interfaz.PanelPrincipal;
 import Nucleo.Campo;
@@ -27,12 +26,10 @@ public class PartidaPrincipal extends JFrame {
     private Mando mandoIzquierda;
     private Mando mandoDerecha;
     
-    private Lateral lateralIzquierdo;
-    private Lateral lateralDerecho;
-    
     public PartidaPrincipal(Jugador jugador1, Jugador jugador2) {
         this.setVisible(true);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setSize(1938, 1048);
         this.setBounds(0, 0, 1938, 1048);
         this.setExtendedState(MAXIMIZED_BOTH);
         this.setIconImage(new ImageIcon("Descargas/FotoTrago.jfif").getImage());
@@ -50,17 +47,12 @@ public class PartidaPrincipal extends JFrame {
         
         principal = new PanelPrincipal(jugadorIzquierda,jugadorDerecha,getWidth()*3/12, 0, getWidth()*6/12, getHeight()*2/3);
         
-        lateralIzquierdo = new Lateral(jugadorIzquierda,0, 0, getWidth()*3/12, getHeight()*2/3);
-        lateralDerecho = new Lateral(jugadorDerecha,getWidth()*9/12, 0, getWidth()*3/12, getHeight()*2/3);
-        
         mandoIzquierda.setBackground(Color.yellow);
         mandoDerecha.setBackground(Color.black);
         
+        this.add(principal);
         this.add(mandoIzquierda);
         this.add(mandoDerecha);
-        this.add(principal);
-        this.add(lateralIzquierdo);
-        this.add(lateralDerecho);    
     }
     
     public void ComenzarTurno() throws InterruptedException{
